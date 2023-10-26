@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- 2021-04-10T11:51:44 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepProveedorDatosCredito" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ad8e94b2-db54-489d-b8d3-89a3febaf8b6">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_A"/>
+	<parameter name="sCo_Prov_d" class="java.lang.String"/>
+	<parameter name="sCo_Prov_h" class="java.lang.String"/>
+	<parameter name="sCo_TipPro_d" class="java.lang.String"/>
+	<parameter name="sCo_TipPro_h" class="java.lang.String"/>
+	<parameter name="sCo_Zon_d" class="java.lang.String"/>
+	<parameter name="sCo_Zon_h" class="java.lang.String"/>
+	<parameter name="sCo_Seg_d" class="java.lang.String"/>
+	<parameter name="sCo_Seg_h" class="java.lang.String"/>
+	<parameter name="sCo_Inactivo" class="java.lang.String"/>
+	<parameter name="sCampOrderBy" class="java.lang.String"/>
+	<parameter name="sDir" class="java.lang.String"/>
+	<parameter name="bHeaderRep" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[{CALL  RepProveedorDatosCredito (
+	 $P{sCo_Prov_d} ,
+	 $P{sCo_Prov_h} ,
+	  $P{sCo_TipPro_d} ,
+	   $P{sCo_TipPro_h} ,
+	    $P{sCo_Zon_d} ,
+	     $P{sCo_Zon_h} ,
+	     $P{sCo_Seg_d} ,
+	     $P{sCo_Seg_h} ,
+	     $P{sCo_Inactivo} ,
+	     $P{sCampOrderBy} ,
+	     $P{sDir} ,
+	     $P{bHeaderRep} 
+)}]]>
+	</queryString>
+	<field name="co_prov" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_prov"/>
+	</field>
+	<field name="prov_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prov_des"/>
+	</field>
+	<field name="mont_cre" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="mont_cre"/>
+	</field>
+	<field name="plaz_pag" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="plaz_pag"/>
+	</field>
+	<field name="desc_ppago" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="desc_ppago"/>
+	</field>
+	<field name="desc_glob" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="desc_glob"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="102" splitType="Stretch">
+			<staticText>
+				<reportElement x="82" y="12" width="46" height="14" uuid="3f2b2c7f-0fd2-4038-98dd-0ff7b1fb5387"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Empresa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="-6" width="103" height="16" uuid="82517390-ff2d-460d-ba8b-f1086486fb03"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Sistema Administrativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="31" width="20" height="20" uuid="89e25c61-5758-4955-bce0-08918284dbb6"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[RIF :]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="450" y="-3" width="100" height="19" uuid="b0ca77f9-4ee1-47f1-9e33-57c679a5514c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="399" y="-4" width="50" height="21" uuid="3d7c9905-cab6-4e41-b272-3d41fb968dca"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="37" width="280" height="21" uuid="a0ef4e93-a5b4-4d67-9f62-c1349b7067c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PROVEEDORES CON SUS DATOS DE CRÉDITOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="556" height="1" uuid="dcf38988-fb1f-48b5-b4fb-7b610ff4c5d2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="21" width="556" height="1" uuid="598a949b-bcdb-4cd8-9ecb-4c3f8bbfbd28"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="1" width="80" height="20" uuid="af3fae04-e7b6-4e69-b38c-bef684a21841">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21942861-77ac-4df4-8d8c-f182bb693cbe"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="2" width="99" height="19" uuid="0fd79fd9-2de8-4340-8c34-c60ece89d20d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07f08018-2f17-43e3-ad8e-23a860017ca2"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="1" width="100" height="19" uuid="13d7db66-df9a-46eb-aa2e-e90d46074ba1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ced326f-f2dc-4db5-a7ad-c3470c23858e"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Limite de Crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="1" width="100" height="20" uuid="2412a251-92c5-4367-9418-9cee62e7350a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f58d519-9b0e-4281-bdb1-267486f8c5e9"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Días de Crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="381" y="0" width="100" height="20" uuid="00055462-674b-4275-8789-660df75c7cc4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eda777a4-5565-499e-b558-66a6e78e4838"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Desc .Pront Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="0" width="79" height="22" uuid="61fcd464-85b3-4270-9e3c-03cb418fcc64">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c9a39940-483b-483b-854d-253cc7d53237"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Desc. Global]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="82" height="20" uuid="c3f1cba4-8435-4d02-b9bd-b2cc4753f98b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21942861-77ac-4df4-8d8c-f182bb693cbe"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_prov}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="0" width="96" height="20" uuid="9299477e-0e2f-41d4-bbc2-e3a5ea39bc26">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07f08018-2f17-43e3-ad8e-23a860017ca2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{prov_des}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="20" uuid="58d876bc-dfde-48fa-a227-3c542ff89edb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ced326f-f2dc-4db5-a7ad-c3470c23858e"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{plaz_pag}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="100" height="20" uuid="3de0df5f-db2a-45ca-925a-87551c2af601">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f58d519-9b0e-4281-bdb1-267486f8c5e9"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{mont_cre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="-1" width="100" height="21" uuid="e090cae0-da6a-43e3-b069-e08038aaecc2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eda777a4-5565-499e-b558-66a6e78e4838"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{desc_ppago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="-2" width="76" height="22" uuid="f632d46b-67ea-4ebb-9039-a05950eb36e3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c9a39940-483b-483b-854d-253cc7d53237"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{desc_glob}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="207" y="9" width="71" height="21" uuid="d81291dc-5704-492f-8ffe-5f4a5f43e1a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="278" y="11" width="100" height="20" uuid="fdf07dd1-a6fc-405c-956b-827e285b16f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

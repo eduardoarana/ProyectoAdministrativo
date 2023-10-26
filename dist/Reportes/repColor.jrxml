@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.1-ac0eebdb29e4c0985457bab279a6db744d661530  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repColor" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b70a572-a5a4-4071-ab84-5547ab5e8fb3">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_A"/>
+	<parameter name="sCo_Color_d" class="java.lang.String"/>
+	<parameter name="sCo_Color_h" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+            *
+        FROM
+            saColor
+            where 
+           (  ( $P{sCo_Color_d}   IS NULL
+                OR  $P{sCo_Color_d}  <= co_color )
+               AND (   $P{sCo_Color_h} IS NULL
+                    OR co_color <= $P{sCo_Color_h} 
+                  )
+                  )
+                   ORDER BY  	des_color]]>
+	</queryString>
+	<field name="co_color" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_color"/>
+	</field>
+	<field name="des_color" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="des_color"/>
+	</field>
+	<field name="campo_Adic" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo_Adic"/>
+	</field>
+	<field name="campo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo1"/>
+	</field>
+	<field name="campo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo2"/>
+	</field>
+	<field name="campo3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo3"/>
+	</field>
+	<field name="campo4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo4"/>
+	</field>
+	<field name="campo5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo5"/>
+	</field>
+	<field name="campo6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo6"/>
+	</field>
+	<field name="campo7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo7"/>
+	</field>
+	<field name="campo8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo8"/>
+	</field>
+	<field name="co_us_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_in"/>
+	</field>
+	<field name="co_sucu_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_in"/>
+	</field>
+	<field name="fe_us_in" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_in"/>
+	</field>
+	<field name="co_us_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_mo"/>
+	</field>
+	<field name="co_sucu_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_mo"/>
+	</field>
+	<field name="fe_us_mo" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_mo"/>
+	</field>
+	<field name="revisado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="revisado"/>
+	</field>
+	<field name="validador" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="validador"/>
+	</field>
+	<group name="co_color">
+		<groupExpression><![CDATA[$F{co_color}]]></groupExpression>
+	</group>
+	<group name="des_color">
+		<groupExpression><![CDATA[$F{des_color}]]></groupExpression>
+	</group>
+	<group name="campo_Adic">
+		<groupExpression><![CDATA[$F{campo_Adic}]]></groupExpression>
+	</group>
+	<group name="campo1">
+		<groupExpression><![CDATA[$F{campo1}]]></groupExpression>
+	</group>
+	<group name="campo2">
+		<groupExpression><![CDATA[$F{campo2}]]></groupExpression>
+	</group>
+	<group name="campo3">
+		<groupExpression><![CDATA[$F{campo3}]]></groupExpression>
+	</group>
+	<group name="campo4">
+		<groupExpression><![CDATA[$F{campo4}]]></groupExpression>
+	</group>
+	<group name="campo5">
+		<groupExpression><![CDATA[$F{campo5}]]></groupExpression>
+	</group>
+	<group name="campo6">
+		<groupExpression><![CDATA[$F{campo6}]]></groupExpression>
+	</group>
+	<group name="campo7">
+		<groupExpression><![CDATA[$F{campo7}]]></groupExpression>
+	</group>
+	<group name="campo8">
+		<groupExpression><![CDATA[$F{campo8}]]></groupExpression>
+	</group>
+	<group name="co_us_in">
+		<groupExpression><![CDATA[$F{co_us_in}]]></groupExpression>
+	</group>
+	<group name="co_sucu_in">
+		<groupExpression><![CDATA[$F{co_sucu_in}]]></groupExpression>
+	</group>
+	<group name="fe_us_in">
+		<groupExpression><![CDATA[$F{fe_us_in}]]></groupExpression>
+	</group>
+	<group name="co_us_mo">
+		<groupExpression><![CDATA[$F{co_us_mo}]]></groupExpression>
+	</group>
+	<group name="co_sucu_mo">
+		<groupExpression><![CDATA[$F{co_sucu_mo}]]></groupExpression>
+	</group>
+	<group name="fe_us_mo">
+		<groupExpression><![CDATA[$F{fe_us_mo}]]></groupExpression>
+	</group>
+	<group name="revisado">
+		<groupExpression><![CDATA[$F{revisado}]]></groupExpression>
+	</group>
+	<group name="validador">
+		<groupExpression><![CDATA[$F{validador}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="240" y="1" width="100" height="40" uuid="ff324f1a-e30d-4c97-b592-165e434cb5bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="20"/>
+				</textElement>
+				<text><![CDATA[COLOR]]></text>
+			</staticText>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="460" y="0" width="100" height="20" uuid="9ee8aa03-4467-419e-81d3-8950e8189c0a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="0" width="69" height="20" uuid="c8b1823d-bd6e-4670-be4a-4c23d51338a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" x="20" y="0" width="100" height="30" uuid="39bf31fc-1db4-48ff-b6c1-ff610ed13a99">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="73793501-98df-4d5b-9820-cdd27fadec80"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="0" width="100" height="30" uuid="98b02237-636f-4de5-acdd-97ea8bf66b39">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5c76d90f-779b-4c0c-98af-df93d14a63be"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="560" height="1" uuid="0deda012-3776-4436-adf2-e7bb59b408d6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="30" width="560" height="1" uuid="008ec94f-9e3c-44ff-9498-26f223f9a81a"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="30" uuid="f34f8449-6d4e-4704-b181-9f38d67c0b5d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="73793501-98df-4d5b-9820-cdd27fadec80"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{co_color}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="2" width="100" height="28" uuid="923691fa-9317-4a76-8d5c-727b3e7a0455">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5c76d90f-779b-4c0c-98af-df93d14a63be"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{des_color}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="230" y="20" width="100" height="20" uuid="6ad720ee-6b56-45c8-ade4-52ef2773fe98"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

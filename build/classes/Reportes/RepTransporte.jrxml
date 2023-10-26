@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepTransporte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d7f80ec-0fde-44a7-8406-2c0901ae4e6e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_a"/>
+	<parameter name="sCo_Trans_d" class="java.lang.String"/>
+	<parameter name="sCo_Trans_h" class="java.lang.String"/>
+	<parameter name="sCo_Sucursal" class="java.lang.String"/>
+	<parameter name="sCampOrderBy" class="java.lang.String"/>
+	<parameter name="sDir" class="java.lang.String"/>
+	<parameter name="bHeaderRep" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[{CALL  RepTransporte (
+	  $P{sCo_Trans_d}  ,
+	  $P{sCo_Trans_h} ,
+	  $P{sCo_Sucursal} ,
+	   $P{sCampOrderBy} ,
+	    $P{sDir} ,
+	     $P{bHeaderRep} 
+)}]]>
+	</queryString>
+	<field name="co_tran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_tran"/>
+	</field>
+	<field name="des_tran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="des_tran"/>
+	</field>
+	<field name="resp_tra" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="resp_tra"/>
+	</field>
+	<field name="numcom" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numcom"/>
+	</field>
+	<field name="feccom" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="feccom"/>
+	</field>
+	<field name="dis_cen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dis_cen"/>
+	</field>
+	<field name="campo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo1"/>
+	</field>
+	<field name="campo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo2"/>
+	</field>
+	<field name="campo3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo3"/>
+	</field>
+	<field name="campo4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo4"/>
+	</field>
+	<field name="campo5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo5"/>
+	</field>
+	<field name="campo6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo6"/>
+	</field>
+	<field name="campo7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo7"/>
+	</field>
+	<field name="campo8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo8"/>
+	</field>
+	<field name="co_us_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_in"/>
+	</field>
+	<field name="co_sucu_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_in"/>
+	</field>
+	<field name="fe_us_in" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_in"/>
+	</field>
+	<field name="co_us_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_mo"/>
+	</field>
+	<field name="co_sucu_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_mo"/>
+	</field>
+	<field name="fe_us_mo" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_mo"/>
+	</field>
+	<field name="revisado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="revisado"/>
+	</field>
+	<field name="trasnfe" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="trasnfe"/>
+	</field>
+	<field name="validador" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="validador"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="450" y="1" width="100" height="19" uuid="f7a42bc2-3a1b-4857-b501-bd2de44dc855"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="399" y="0" width="50" height="21" uuid="8d0ab0e2-a2e8-4a08-a00c-2de34dfc38c7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="41" width="201" height="21" uuid="616bd3af-4485-4a6c-a6f4-b2ebe501d58b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transportes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="35" width="20" height="20" uuid="a75c9588-674b-4031-939c-8a137939dd59"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[RIF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="16" width="46" height="14" uuid="cd7c08df-0c0b-4e30-816a-5635e076ee3f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Empresa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="-2" width="103" height="16" uuid="40f58958-bb60-410d-b7f6-6d1383c7e389"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Sistema Administrativo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="20" width="551" height="1" uuid="fe5ab6ce-1dd5-4420-82fe-8b14545f4510"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="551" height="1" uuid="8a716af0-87b5-4308-ba11-9a548a5e9674"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="21" uuid="f9753d99-8d29-4f2b-b72c-d935f4a16367">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="09543228-6f94-4720-8df3-e540ad389328"/>
+				</reportElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="195" height="21" uuid="0cd911de-a1dd-4c2e-abb7-0c4a09252a70">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f91f6de0-9eac-4a71-9f06-f4c5a41cdfd5"/>
+				</reportElement>
+				<text><![CDATA[descripcion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="dd362537-9ba7-4ffa-a95e-29a1842876b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="09543228-6f94-4720-8df3-e540ad389328"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_tran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="0" width="236" height="20" uuid="ec59e903-0de4-4762-9534-79bcf6fe7edc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f91f6de0-9eac-4a71-9f06-f4c5a41cdfd5"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{des_tran}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepStockArticulosxAlmacen" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="292e2dfb-5704-47cb-a5ff-c98b4d268fe3">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_a"/>
+	<parameter name="sCo_Codigo_d" class="java.lang.String"/>
+	<parameter name="sCo_Codigo_h" class="java.lang.String"/>
+	<parameter name="sCo_Descripcion_d" class="java.lang.String"/>
+	<parameter name="sCo_Descripcion_h" class="java.lang.String"/>
+	<parameter name="sCo_Linea_d" class="java.lang.String"/>
+	<parameter name="sCo_Linea_h" class="java.lang.String"/>
+	<parameter name="sCo_Categoria_d" class="java.lang.String"/>
+	<parameter name="sCo_Categoria_h" class="java.lang.String"/>
+	<parameter name="sCo_SubLinea_d" class="java.lang.String"/>
+	<parameter name="sCo_SubLinea_h" class="java.lang.String"/>
+	<parameter name="sCo_Almacen_d" class="java.lang.String"/>
+	<parameter name="sCo_Almacen_h" class="java.lang.String"/>
+	<parameter name="sTipoStock" class="java.lang.String"/>
+	<parameter name="sCo_NivelStock" class="java.lang.String"/>
+	<parameter name="sCo_Sucursal" class="java.lang.String"/>
+	<parameter name="sCampOrderBy" class="java.lang.String"/>
+	<parameter name="sDir" class="java.lang.String"/>
+	<parameter name="bHeaderRep" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[{CALL  RepStockArticulosxAlmacen (
+	 $P{sCo_Codigo_d} ,
+	 $P{sCo_Codigo_h} ,
+	 $P{sCo_Descripcion_d} ,
+	 $P{sCo_Descripcion_h} ,
+	 $P{sCo_Linea_d} ,
+	 $P{sCo_Linea_h} ,
+	 $P{sCo_Categoria_d} ,
+	 $P{sCo_Categoria_h} ,
+	 $P{sCo_SubLinea_d} ,
+	 $P{sCo_SubLinea_h} ,
+	 $P{sCo_Almacen_d} ,
+	 $P{sCo_Almacen_h} ,
+	 $P{sTipoStock} ,
+	 $P{sCo_NivelStock} ,
+	  $P{sCo_Sucursal} ,
+	   $P{sCampOrderBy} ,
+	    $P{sDir} ,
+	     $P{bHeaderRep} 
+)}]]>
+	</queryString>
+	<field name="co_art" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_art"/>
+	</field>
+	<field name="StockActual" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="StockActual"/>
+	</field>
+	<field name="co_alma" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_alma"/>
+	</field>
+	<field name="des_alma" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="des_alma"/>
+	</field>
+	<field name="lin_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lin_des"/>
+	</field>
+	<field name="subl_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="subl_des"/>
+	</field>
+	<field name="cat_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cat_des"/>
+	</field>
+	<field name="TipoStock" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TipoStock"/>
+	</field>
+	<field name="stock_max" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stock_max"/>
+	</field>
+	<field name="stock_min" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stock_min"/>
+	</field>
+	<field name="stock_pedido" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stock_pedido"/>
+	</field>
+	<field name="co_uni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_uni"/>
+	</field>
+	<field name="des_uni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="des_uni"/>
+	</field>
+	<field name="COLUMN_14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_art"/>
+	</field>
+	<field name="fecha_reg" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_reg"/>
+	</field>
+	<field name="art_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="art_des"/>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+	</field>
+	<field name="anulado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="anulado"/>
+	</field>
+	<field name="fecha_inac" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_inac"/>
+	</field>
+	<field name="co_lin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_lin"/>
+	</field>
+	<field name="co_subl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_subl"/>
+	</field>
+	<field name="co_cat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_cat"/>
+	</field>
+	<field name="co_color" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_color"/>
+	</field>
+	<field name="co_ubicacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_ubicacion"/>
+	</field>
+	<field name="cod_proc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cod_proc"/>
+	</field>
+	<field name="item" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="item"/>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="modelo"/>
+	</field>
+	<field name="ref" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ref"/>
+	</field>
+	<field name="generico" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="generico"/>
+	</field>
+	<field name="maneja_serial" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="maneja_serial"/>
+	</field>
+	<field name="maneja_lote" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="maneja_lote"/>
+	</field>
+	<field name="maneja_lote_venc" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="maneja_lote_venc"/>
+	</field>
+	<field name="margen_min" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="margen_min"/>
+	</field>
+	<field name="margen_max" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="margen_max"/>
+	</field>
+	<field name="tipo_imp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_imp"/>
+	</field>
+	<field name="tipo_imp2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_imp2"/>
+	</field>
+	<field name="tipo_imp3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_imp3"/>
+	</field>
+	<field name="co_reten" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_reten"/>
+	</field>
+	<field name="garantia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="garantia"/>
+	</field>
+	<field name="volumen" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="volumen"/>
+	</field>
+	<field name="peso" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="peso"/>
+	</field>
+	<field name="COLUMN_42" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stock_min"/>
+	</field>
+	<field name="COLUMN_43" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stock_max"/>
+	</field>
+	<field name="COLUMN_44" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stock_pedido"/>
+	</field>
+	<field name="relac_unidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="relac_unidad"/>
+	</field>
+	<field name="punt_cli" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="punt_cli"/>
+	</field>
+	<field name="lic_mon_ilc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="lic_mon_ilc"/>
+	</field>
+	<field name="lic_capacidad" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="lic_capacidad"/>
+	</field>
+	<field name="lic_grado_al" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="lic_grado_al"/>
+	</field>
+	<field name="lic_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lic_tipo"/>
+	</field>
+	<field name="prec_om" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="prec_om"/>
+	</field>
+	<field name="comentario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="comentario"/>
+	</field>
+	<field name="tipo_cos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_cos"/>
+	</field>
+	<field name="porc_margen_minimo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="porc_margen_minimo"/>
+	</field>
+	<field name="porc_margen_maximo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="porc_margen_maximo"/>
+	</field>
+	<field name="mont_comi" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="mont_comi"/>
+	</field>
+	<field name="porc_arancel" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="porc_arancel"/>
+	</field>
+	<field name="numcom" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numcom"/>
+	</field>
+	<field name="feccom" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="feccom"/>
+	</field>
+	<field name="dis_cen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dis_cen"/>
+	</field>
+	<field name="reten_iva_tercero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="reten_iva_tercero"/>
+	</field>
+	<field name="campo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo1"/>
+	</field>
+	<field name="campo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo2"/>
+	</field>
+	<field name="campo3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo3"/>
+	</field>
+	<field name="campo4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo4"/>
+	</field>
+	<field name="campo5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo5"/>
+	</field>
+	<field name="campo6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo6"/>
+	</field>
+	<field name="campo7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo7"/>
+	</field>
+	<field name="campo8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo8"/>
+	</field>
+	<field name="co_us_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_in"/>
+	</field>
+	<field name="co_sucu_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_in"/>
+	</field>
+	<field name="fe_us_in" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_in"/>
+	</field>
+	<field name="co_us_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_mo"/>
+	</field>
+	<field name="co_sucu_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_mo"/>
+	</field>
+	<field name="fe_us_mo" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_mo"/>
+	</field>
+	<field name="revisado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="revisado"/>
+	</field>
+	<field name="trasnfe" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="trasnfe"/>
+	</field>
+	<field name="validador" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="validador"/>
+	</field>
+	<field name="aux_imp01" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="aux_imp01"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="27" width="46" height="14" uuid="d75d643d-1437-4c15-a056-20f233a2ac81"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Empresa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="11" width="103" height="16" uuid="ed4c922a-76a6-43f0-96ce-c19983714119"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Sistema Administrativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="47" width="20" height="20" uuid="d32362ee-54fc-462f-8ab0-5cf1438833e8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[RIF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="9" width="50" height="21" uuid="08680374-41cc-4099-b4a2-10474b8ac91e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="440" y="10" width="100" height="19" uuid="33a47042-a637-41ed-8530-622e2dcb84f7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="130" y="20" width="250" height="21" uuid="c01db3c7-1fab-4a9d-90bb-5ef00d47aa75"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Articulos con su Stock x Almacen]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="10" width="69" height="17" uuid="6db4f7c5-7cda-4d40-bc2d-3035c93bedc1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="13" width="90" height="17" uuid="d8e6e6df-fb2c-40a2-838a-2fdeba3bd1d3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="10" width="69" height="17" uuid="30bd1f26-046f-46e0-a94d-0ffc85eb6271"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Almacen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="9" width="60" height="17" uuid="9b134765-fdd8-42ac-9c6e-f3f8bf3b15fb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Actual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="503" y="9" width="60" height="17" uuid="b6e5fb8d-5a71-495d-a74c-5ac0619a2d59"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Unidad]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="561" height="1" uuid="e988f503-f142-4e98-9fec-387619b92fa7"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="9" width="80" height="21" uuid="eb8f6de5-6a3a-4611-a46d-7f5527993e8a"/>
+				<textFieldExpression><![CDATA[$F{co_art}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="561" height="1" uuid="00471c7a-9dbf-4b5c-8181-2466f36872b2"/>
+			</line>
+			<textField>
+				<reportElement x="80" y="10" width="220" height="18" uuid="66df9190-263d-4685-ac95-9df758713707">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfe42742-48c5-43ce-9a6b-2dad07073484"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{art_des}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="5" width="50" height="23" uuid="24d44e81-0f10-4774-a3cd-d2d4db31d09d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="77f31093-a895-42f8-ae0a-7854852955cf"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_uni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="10" width="69" height="19" uuid="ee7f8d99-d22f-404e-97d0-c381bc313e31">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2883a521-1c75-4b53-9857-453672408947"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_alma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="13" width="100" height="17" uuid="623f7c3e-8ba5-4f86-a090-92b74ff6d544">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9c6be006-085f-4e92-bdb5-ccce775b7715"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{StockActual}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
