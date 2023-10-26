@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubCategoria" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8dde649-99fc-4e7b-9ca2-fc16e24a0fc5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_a"/>
+	<parameter name="Categoria" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select  
+     articulo.dis_cen,
+     articulo.co_art ,
+	-- imagen.imagen AS IMG, 
+	 articulo.art_des,
+	 articulo.campo8,
+	 --lineArticulo.lin_des as Categoria,
+	  round (articulo.prec_vta1 ,2) as Detal ,
+	 (CASE WHEN (articulo.stock_act- articulo.stock_com ) > 0 
+	 	THEN 'SI'
+	   ELSE 'NO'
+	    END ) AS DIS ,
+		round(articulo.prec_vta2 , 2 ) as Mayor,
+		(CASE WHEN (articulo.stock_act- articulo.stock_com ) > CONVERT( int , articulo.campo1) THEN 'SI'
+	   ELSE 'NO'
+	    END ) AS  DISMAY  
+	   from art as articulo 
+       INNER JOIN lin_art  AS lineArticulo ON articulo.co_lin= lineArticulo.co_lin
+	   INNER JOIN st_almac AS almacenLote ON  articulo.co_art= almacenLote.co_art
+	 -- LEFT JOIN Imagen as imagen on imagen.codigo=articulo.co_art
+       where   almacenLote.co_alma=08 and articulo.stock_act<>0 and lineArticulo.co_lin =  $P{Categoria} 
+       order by lineArticulo.co_lin asc]]>
+	</queryString>
+	<field name="dis_cen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dis_cen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="art"/>
+	</field>
+	<field name="co_art" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_art"/>
+	</field>
+	<field name="art_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="art_des"/>
+	</field>
+	<field name="campo8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo8"/>
+	</field>
+	<field name="Detal" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Detal"/>
+	</field>
+	<field name="DIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DIS"/>
+	</field>
+	<field name="Mayor" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Mayor"/>
+	</field>
+	<field name="DISMAY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DISMAY"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="40" y="0" width="100" height="30" uuid="b62e112e-a13e-4d92-b070-8effdfa6780d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca32ef28-8692-4ad5-970e-93f126fe4322"/>
+				</reportElement>
+				<text><![CDATA[co_art]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="100" height="30" uuid="f5537364-ce3c-4ca5-bd87-dbabb4aaa54d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7714f97c-c3e9-4bcd-95da-db42105cbf85"/>
+				</reportElement>
+				<text><![CDATA[art_des]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="100" height="30" uuid="215357aa-1fc8-47d0-bde9-b3bbf0c57386">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3864cbcc-a977-4aeb-9ef6-d1fa7563090e"/>
+				</reportElement>
+				<text><![CDATA[Detal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="100" height="30" uuid="03cd0e92-7239-4312-a809-9feea92eaeda">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82320e76-089f-4dd1-9093-7c4776cc194d"/>
+				</reportElement>
+				<text><![CDATA[Mayor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="-100" y="0" width="100" height="30" uuid="36589311-2c2d-48de-a133-a2e31062a52a"/>
+				<text><![CDATA[co_art]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="0" width="100" height="30" uuid="2e2f8d8d-2f54-4818-918e-b430f9a2de67">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca32ef28-8692-4ad5-970e-93f126fe4322"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_art}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="30" uuid="4fd01f55-835d-4b45-b45a-ddc28fed37a7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7714f97c-c3e9-4bcd-95da-db42105cbf85"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{art_des}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="100" height="30" uuid="ac78d955-4d17-4d27-b991-1052847d3912">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3864cbcc-a977-4aeb-9ef6-d1fa7563090e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new Double($F{Detal}).setScale(1, RoundingMode.DOWN)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="100" height="30" uuid="12683014-a220-4d7a-9e20-088eb01d835f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82320e76-089f-4dd1-9093-7c4776cc194d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Mayor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

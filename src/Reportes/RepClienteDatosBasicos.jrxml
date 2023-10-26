@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repCliente" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2fe25c0b-6022-4120-95cc-b75a3cf6b4af">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_a"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="sCo_Cli_d" class="java.lang.String"/>
+	<parameter name="sCo_Cli_h" class="java.lang.String"/>
+	<parameter name="sCo_Ven_d" class="java.lang.String"/>
+	<parameter name="sCo_Ven_h" class="java.lang.String"/>
+	<parameter name="sCo_Tipcli_d" class="java.lang.String"/>
+	<parameter name="sCo_Tipcli_h" class="java.lang.String"/>
+	<parameter name="sCo_Zon_d" class="java.lang.String"/>
+	<parameter name="sCo_Zon_h" class="java.lang.String"/>
+	<parameter name="sCo_Seg_d" class="java.lang.String"/>
+	<parameter name="sCo_Seg_h" class="java.lang.String"/>
+	<parameter name="sCo_Pais_d" class="java.lang.String"/>
+	<parameter name="sCo_Pais_h" class="java.lang.String"/>
+	<parameter name="sCo_Inactivo" class="java.lang.String"/>
+	<parameter name="bCo_Inactivo_Filtro" class="java.lang.String"/>
+	<parameter name="sCo_Sucursal" class="java.lang.String"/>
+	<parameter name="sCampOrderBy" class="java.lang.String"/>
+	<parameter name="sDir" class="java.lang.String"/>
+	<parameter name="bHeaderRep" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[{CALL  RepClienteDatosBasicos (
+	 $P{sCo_Cli_d} ,
+	 $P{sCo_Cli_h} ,
+	  $P{sCo_Ven_d} ,
+	   $P{sCo_Ven_h} ,
+	    $P{sCo_Tipcli_d} ,
+	     $P{sCo_Tipcli_h} ,
+	     $P{sCo_Zon_d} ,
+	     $P{sCo_Zon_h} ,
+	     $P{sCo_Seg_d} ,
+	     $P{sCo_Seg_h} ,
+	     $P{sCo_Pais_d} ,
+	     $P{sCo_Pais_h} ,
+	     $P{sCo_Inactivo} ,
+	     $P{bCo_Inactivo_Filtro}, 
+	     $P{sCo_Sucursal} ,
+	     $P{sCampOrderBy} ,
+	     $P{sDir} ,
+	     $P{bHeaderRep} 
+)}]]>
+	</queryString>
+	<field name="co_cli" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_cli"/>
+	</field>
+	<field name="tip_cli" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tip_cli"/>
+	</field>
+	<field name="cli_des" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_des"/>
+	</field>
+	<field name="direc1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="direc1"/>
+	</field>
+	<field name="dir_ent2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dir_ent2"/>
+	</field>
+	<field name="direc2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="direc2"/>
+	</field>
+	<field name="telefonos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telefonos"/>
+	</field>
+	<field name="fax" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fax"/>
+	</field>
+	<field name="inactivo" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="inactivo"/>
+	</field>
+	<field name="comentario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="comentario"/>
+	</field>
+	<field name="respons" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="respons"/>
+	</field>
+	<field name="fecha_reg" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_reg"/>
+	</field>
+	<field name="puntaje" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="puntaje"/>
+	</field>
+	<field name="mont_cre" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="mont_cre"/>
+	</field>
+	<field name="co_mone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_mone"/>
+	</field>
+	<field name="cond_pag" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cond_pag"/>
+	</field>
+	<field name="plaz_pag" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="plaz_pag"/>
+	</field>
+	<field name="desc_ppago" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="desc_ppago"/>
+	</field>
+	<field name="co_zon" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_zon"/>
+	</field>
+	<field name="co_seg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_seg"/>
+	</field>
+	<field name="co_ven" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_ven"/>
+	</field>
+	<field name="desc_glob" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="desc_glob"/>
+	</field>
+	<field name="horar_caja" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="horar_caja"/>
+	</field>
+	<field name="frecu_vist" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="frecu_vist"/>
+	</field>
+	<field name="lunes" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="lunes"/>
+	</field>
+	<field name="martes" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="martes"/>
+	</field>
+	<field name="miercoles" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="miercoles"/>
+	</field>
+	<field name="jueves" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="jueves"/>
+	</field>
+	<field name="viernes" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="viernes"/>
+	</field>
+	<field name="sabado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="sabado"/>
+	</field>
+	<field name="domingo" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="domingo"/>
+	</field>
+	<field name="rif" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rif"/>
+	</field>
+	<field name="nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nit"/>
+	</field>
+	<field name="contrib" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="contrib"/>
+	</field>
+	<field name="numcom" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numcom"/>
+	</field>
+	<field name="feccom" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="feccom"/>
+	</field>
+	<field name="dis_cen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dis_cen"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+	</field>
+	<field name="co_cta_ingr_egr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_cta_ingr_egr"/>
+	</field>
+	<field name="juridico" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="juridico"/>
+	</field>
+	<field name="tipo_adi" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_adi"/>
+	</field>
+	<field name="matriz" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="matriz"/>
+	</field>
+	<field name="co_tab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_tab"/>
+	</field>
+	<field name="tipo_per" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_per"/>
+	</field>
+	<field name="valido" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="valido"/>
+	</field>
+	<field name="ciudad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ciudad"/>
+	</field>
+	<field name="zip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="zip"/>
+	</field>
+	<field name="login" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="login"/>
+	</field>
+	<field name="password" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="password"/>
+	</field>
+	<field name="website" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="website"/>
+	</field>
+	<field name="sincredito" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="sincredito"/>
+	</field>
+	<field name="contribu_e" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="contribu_e"/>
+	</field>
+	<field name="rete_regis_doc" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="rete_regis_doc"/>
+	</field>
+	<field name="porc_esp" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="porc_esp"/>
+	</field>
+	<field name="co_pais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_pais"/>
+	</field>
+	<field name="serialp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="serialp"/>
+	</field>
+	<field name="Id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Id"/>
+	</field>
+	<field name="salestax" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="salestax"/>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+	</field>
+	<field name="campo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo1"/>
+	</field>
+	<field name="campo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo2"/>
+	</field>
+	<field name="campo3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo3"/>
+	</field>
+	<field name="campo4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo4"/>
+	</field>
+	<field name="campo5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo5"/>
+	</field>
+	<field name="campo6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo6"/>
+	</field>
+	<field name="campo7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo7"/>
+	</field>
+	<field name="campo8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo8"/>
+	</field>
+	<field name="co_us_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_in"/>
+	</field>
+	<field name="fe_us_in" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_in"/>
+	</field>
+	<field name="co_sucu_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_in"/>
+	</field>
+	<field name="co_us_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_mo"/>
+	</field>
+	<field name="fe_us_mo" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_mo"/>
+	</field>
+	<field name="co_sucu_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_mo"/>
+	</field>
+	<field name="revisado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="revisado"/>
+	</field>
+	<field name="trasnfe" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="trasnfe"/>
+	</field>
+	<field name="validador" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="validador"/>
+	</field>
+	<field name="email_alterno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email_alterno"/>
+	</field>
+	<field name="des_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="des_tipo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="82" y="19" width="46" height="14" uuid="8470bf30-a14c-4529-bcdb-1a4b7fcee7b5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Empresa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="1" width="103" height="16" uuid="15349435-3e3e-4990-ba0e-83f526cd7783"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Sistema Administrativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="38" width="20" height="20" uuid="9469ffce-0bd0-4c14-9fa2-dbf52001a8e5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[RIF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="2" width="50" height="21" uuid="6f362c22-12d6-40e5-afac-898f824d166b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="450" y="3" width="100" height="19" uuid="332d84eb-6a9e-4a2f-9a71-7193e634354c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="161" y="37" width="241" height="21" uuid="30ecd1a4-2263-48a7-87ca-1057324b8a06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CLIENTES CON SUS DATOS BÁSICOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="20" uuid="d1dc9322-edf5-40b5-8ca6-ae250d2ba164">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="12afcbcf-6d81-4a10-b1c5-b0baa9019565"/>
+				</reportElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="-1" width="78" height="20" uuid="affaf86d-70e9-4a1a-b3c9-ea7975b343bf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="425869e1-dbed-42ff-9e04-0e3a3fca7f1c"/>
+				</reportElement>
+				<text><![CDATA[tip_cli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="0" width="91" height="20" uuid="914e4991-2bc5-4f0b-b574-8c4377a6b363">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="340d92ab-4a1e-4407-869c-9fb212941e2a"/>
+				</reportElement>
+				<text><![CDATA[cli_des]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="90" height="20" uuid="e7e5fb78-afff-47b0-9203-7aee08ea7bec">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9c5ee68-6c4b-451c-ac9e-19592b01147f"/>
+				</reportElement>
+				<text><![CDATA[rif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="100" height="20" uuid="f7d74f02-c2e1-40cf-acd6-a8e105dac340">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0875e653-dea5-40e6-a213-ffed343b7d91"/>
+				</reportElement>
+				<text><![CDATA[telefonos]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-1" y="19" width="556" height="1" uuid="f2cd1d6b-2515-4f84-8d17-10547f684ba6"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="368a1616-3c16-4863-9f00-10bc6e323abb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="12afcbcf-6d81-4a10-b1c5-b0baa9019565"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="1" width="80" height="18" uuid="c4c1fab1-9e90-49e0-9bc7-7c823186c9e2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34818c3b-bf8d-441f-9ec1-da3703940922"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{tip_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="0" width="92" height="19" uuid="75735c72-7919-4f64-8c0a-1d016d493149">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="340d92ab-4a1e-4407-869c-9fb212941e2a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cli_des}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="2" width="89" height="18" uuid="1a9af712-c7cc-4f8a-9246-6cd0aac05616">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9c5ee68-6c4b-451c-ac9e-19592b01147f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{rif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="2" width="100" height="18" uuid="4b263c28-a751-4d15-ab6f-eaf2ad4fb9bd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0875e653-dea5-40e6-a213-ffed343b7d91"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{telefonos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

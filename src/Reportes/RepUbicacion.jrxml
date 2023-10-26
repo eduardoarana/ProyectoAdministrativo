@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepUbicacion" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="448630a2-52ee-41f5-a335-f75a35db2a53">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Admin_a"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="395"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="591"/>
+	<parameter name="sCo_Ubicacion_d" class="java.lang.String"/>
+	<parameter name="sCo_Ubicacion_h" class="java.lang.String"/>
+	<parameter name="sCo_Sucursal" class="java.lang.String"/>
+	<parameter name="sCampOrderBy" class="java.lang.String"/>
+	<parameter name="sDir" class="java.lang.String"/>
+	<parameter name="bHeaderRep" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[{CALL  RepUbicacion (
+	 $P{sCo_Ubicacion_d} ,
+	 $P{sCo_Ubicacion_h} ,
+	  $P{sCo_Sucursal} ,
+	   $P{sCampOrderBy} ,
+	    $P{sDir} ,
+	     $P{bHeaderRep} 
+)}]]>
+	</queryString>
+	<field name="co_ubicacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_ubicacion"/>
+	</field>
+	<field name="des_ubicacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="des_ubicacion"/>
+	</field>
+	<field name="campo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo1"/>
+	</field>
+	<field name="campo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo2"/>
+	</field>
+	<field name="campo3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo3"/>
+	</field>
+	<field name="campo4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo4"/>
+	</field>
+	<field name="campo5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo5"/>
+	</field>
+	<field name="campo6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo6"/>
+	</field>
+	<field name="campo7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo7"/>
+	</field>
+	<field name="campo8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="campo8"/>
+	</field>
+	<field name="co_us_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_in"/>
+	</field>
+	<field name="co_sucu_in" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_in"/>
+	</field>
+	<field name="fe_us_in" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_in"/>
+	</field>
+	<field name="co_us_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_us_mo"/>
+	</field>
+	<field name="co_sucu_mo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="co_sucu_mo"/>
+	</field>
+	<field name="fe_us_mo" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fe_us_mo"/>
+	</field>
+	<field name="revisado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="revisado"/>
+	</field>
+	<field name="trasnfe" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="trasnfe"/>
+	</field>
+	<field name="validador" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.label" value="validador"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="72" y="1" width="103" height="16" uuid="e53cf6d3-f6a1-4cf0-ace6-48c7f58aebf6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Sistema Administrativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="19" width="46" height="14" uuid="7bbb9f8f-cb81-4567-9b93-dfa7c81f3325"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Empresa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="38" width="20" height="20" uuid="ef803b79-523a-469c-bf01-04c680cda908"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[RIF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="3" width="50" height="21" uuid="baa0baed-c243-411a-ad3c-4ee8db8e2286"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="441" y="4" width="100" height="19" uuid="05e5b417-030a-4d34-a75f-8cc239b0816d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="152" y="44" width="241" height="21" uuid="380f3c20-b643-464d-beff-2ad82302e64a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ubicacion]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="78" height="20" uuid="45233ac5-0a0a-4971-8604-f1ee8a690c57">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8144793-cb42-4997-8f00-371d59ea9279"/>
+				</reportElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="1" width="157" height="20" uuid="64fd300c-2add-4b68-9ab2-33b1fb416c12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0da219c8-9dd4-4280-bd94-aabe43d6106e"/>
+				</reportElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="23" width="550" height="1" uuid="81ecf82f-e7c0-406a-b39b-404b16cc08cc"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-1" width="550" height="1" uuid="504d998a-8092-4491-ac83-85a280332568"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="6e31322d-bcb5-4ab9-a7ad-f73a3583ad78">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8144793-cb42-4997-8f00-371d59ea9279"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{co_ubicacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="1" width="159" height="17" uuid="76f2724f-f501-4b3a-8a7e-cf47385427c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0da219c8-9dd4-4280-bd94-aabe43d6106e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{des_ubicacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
