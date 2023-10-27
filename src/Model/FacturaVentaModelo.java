@@ -902,7 +902,7 @@ public class FacturaVentaModelo {
                     + "?,"
                     + "?"
                     + ")}");
-            cstmt.setInt(1, rengNum);
+            cstmt.setInt(1, rengNum); 
             cstmt.setString(2, doc_num);
             cstmt.setString(3, co_art);
             cstmt.setString(4, co_alm);
