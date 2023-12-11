@@ -117,4 +117,30 @@ public class StockxAlmacenModel {
         }
         return resultado;
     }
+
+    public int pStockActualizar(
+            String sCo_Alma,
+            String sCo_Art,
+            String sCo_Uni,
+            int deCantidad,
+            int bSumarStock,
+            int bPermiteStockNegativo
+    ) {
+        try {
+            cstmt = con.prepareCall("{CALL  pInsertarStockAlmacen("
+                    + "?,"
+                    + "?,"
+                    + "?,"
+                    + "?,"
+                    + "?,"
+                    + "?"
+                    + ")}"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultado;
+    }
+
 }

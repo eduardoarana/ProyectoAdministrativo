@@ -230,7 +230,7 @@ public class AjustesESController implements ActionListener, KeyListener {
 
         } else if (event.getSource().equals(this.vista.btnactulizar)) {
 
-            System.out.println("FECHA :::::::" +Utilitario.obtenerFecha(vista.sdFecha));
+            System.out.println("FECHA :::::::" + Utilitario.obtenerFecha(vista.sdFecha));
             resultado = modelo.pActualizarAjusteEntradaSalida(
                     vista.txtajue_num.getText(), //sAjue_Num
                     vista.txtajue_num.getText(),//sAjue_NumOrig
@@ -299,7 +299,7 @@ public class AjustesESController implements ActionListener, KeyListener {
                 vista.settearCampos();
 
                 modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
-            //    modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
+                //    modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
             }
         } else if (event.getSource().equals(this.vista.btnEliminar)) {
             String numAjuste = vista.txtajue_num.getText();
@@ -345,10 +345,17 @@ public class AjustesESController implements ActionListener, KeyListener {
             cargarDatosAjustesESrenglon(null);
             modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
         } else if (event.getSource().equals(this.vista.btnagregar)) {
-
+            int ultimaFila = 0, renglones=0;
+            ultimaFila = vista.jtableAjusteES.getRowCount();
+            if (vista.jtableAjusteES.getRowCount() == 0) {
+                renglones = +1;
+            } else {
+                renglones = Integer.parseInt(vista.jtableAjusteES.getValueAt(vista.jtableAjusteES.getRowCount() - 1, 0).toString()) + 1;
+            }
+            
             modeloTablaAjustesEntradaSalidaRenglon.refrescarTable();
             SaAjusteRengBO ajustes = new SaAjusteRengBO();
-            ajustes.setReng_num(String.valueOf(vista.jtableAjusteES.getRowCount()));
+            ajustes.setReng_num(String.valueOf(renglones));
             ajustes.setAjue_num("");
             ajustes.setCo_tipo("");
             ajustes.setCo_art("");
