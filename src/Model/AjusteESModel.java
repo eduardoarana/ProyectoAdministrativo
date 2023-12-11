@@ -506,43 +506,46 @@ public class AjusteESModel {
     }
 
    
-//    public static void main(String arg[]) {
+    public static void main(String arg[]) {
 //        String valor = "000000000008647C";
 //
-//        AjusteESModel m = new AjusteESModel();
+        AjusteESModel m = new AjusteESModel();
 //        int resulta = m.pEliminarAjusteEntradaSalida("32", "9999", "9999", "12345");
 //        
 //         System.out.println(" Resultado :: " + resulta + " Valor ;  " + valor);
 //        
-////        int resulta = m.pActualizarAjusteEntradaSalida("111111",
-////                "111111",
-////                "2021-11-13 12:50:00", "descrip Actualizacion ",
-////                "1",
-////                "BSF",
-////                null,
-////                "0",
-////                null,
-////                null,
-////                null,
-////                "campo1",
-////                "camp2",
-////                "campo3",
-////                "campo4",
-////                "campo5555",
-////                "campo6",
-////                "campo7",
-////                "campo8",
-////                "999",
-////                "sucu",
-////                "maquina",
-////                "wewe",
-////                "1",
-////                "0",
-////                //tsValidador
-////                valor
-////        );
+        int resulta = m.pActualizarAjusteEntradaSalida(
+                "nuevo",
+                "nuevo",
+                "2021-11-14",
+                "descrip Actualizacion ",
+                "1",
+                "BSF",
+                null,
+                "0",
+                "1",
+                null,
+                null,
+                "campo1",
+                "camp2",
+                "campo3",
+                "campo4",
+                "campo5555",
+                "campo6",
+                "campo7",
+                "campo8",
+                "999",
+                "sucu",
+                "maquina",
+                "wewe",
+                "1",
+                "0",
+                //tsValidador
+                ""
+        );
+          System.out.println(" Resultado :: " + resulta + " Valor ;  ");
 //
 //       
 //
-//    }
+    }
 }

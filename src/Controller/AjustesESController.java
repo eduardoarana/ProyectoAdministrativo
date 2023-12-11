@@ -82,7 +82,6 @@ public class AjustesESController implements ActionListener, KeyListener {
                 JOptionPane.showMessageDialog(new JFrame(), "No ha puede estar vacio el campo numero de ajuste", "Software", JOptionPane.INFORMATION_MESSAGE);
                 // vista.lblValidacionNumAjuste.setVisible(true);
                 return;
-
             }
 
             for (int i = 0; i < cantidadRows; i++) {
@@ -231,6 +230,7 @@ public class AjustesESController implements ActionListener, KeyListener {
 
         } else if (event.getSource().equals(this.vista.btnactulizar)) {
 
+            System.out.println("FECHA :::::::" +Utilitario.obtenerFecha(vista.sdFecha));
             resultado = modelo.pActualizarAjusteEntradaSalida(
                     vista.txtajue_num.getText(), //sAjue_Num
                     vista.txtajue_num.getText(),//sAjue_NumOrig
@@ -261,7 +261,12 @@ public class AjustesESController implements ActionListener, KeyListener {
             );
             // Actualizar AjustesEntada y Salida de renglons
             int cantidadRows = vista.jtableAjusteES.getRowCount();
-            int resu = Utilitario.eliminarRegistro(Conection.Conexion.getCom(), Vistaprincipal.tempEmpresa, "saAjusteReng", "ajue_num", Integer.parseInt(vista.txtajue_num.getText()));
+            int resu = Utilitario.eliminarRegistro(
+                    Conection.Conexion.getCom(),
+                    Vistaprincipal.tempEmpresa, "saAjusteReng",
+                    "ajue_num",
+                    vista.txtajue_num.getText()
+            );
 
             System.out.println("Eliminacion del registro)" + resu);
 
@@ -292,8 +297,9 @@ public class AjustesESController implements ActionListener, KeyListener {
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(new JFrame(), "Se ha Actualizado Satisfactoriamente", "Software", JOptionPane.INFORMATION_MESSAGE);
                 vista.settearCampos();
+
                 modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
-                modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
+            //    modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
             }
         } else if (event.getSource().equals(this.vista.btnEliminar)) {
             String numAjuste = vista.txtajue_num.getText();
@@ -304,7 +310,7 @@ public class AjustesESController implements ActionListener, KeyListener {
                         Utilitario.nombreHost(),
                         Vistaprincipal.lblNombreUsuario1.getText(),
                         Vistaprincipal.lblNombreSucursal.getText());
-                Utilitario.eliminarRegistro(Conection.Conexion.getCom(), Vistaprincipal.tempEmpresa, "saAjusteReng", "ajue_num", Integer.parseInt(numAjuste));
+                Utilitario.eliminarRegistro(Conection.Conexion.getCom(), Vistaprincipal.tempEmpresa, "saAjusteReng", "ajue_num", numAjuste);
 
                 if (resultado != 0) {
                     JOptionPane.showMessageDialog(new JFrame(), "Se ha Eliminado Satisfactoriamente", "Software", JOptionPane.INFORMATION_MESSAGE);

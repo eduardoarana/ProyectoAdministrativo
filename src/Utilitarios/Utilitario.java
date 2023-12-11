@@ -51,7 +51,7 @@ public class Utilitario {
 
     //Parametro string formatofecha  yyyy-MM-dd  y retorna fecha tipo Date..
     public static Date obtenerFecha(String Sfecha) {
-        SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat objSDF = new SimpleDateFormat("yyyyMMdd");
 
         Date fecha = new Date();
         try {
@@ -164,7 +164,7 @@ public class Utilitario {
         return resultado;
     }
 
-    public static int eliminarRegistro(Connection con, String bd, String table, String column, int valor) {
+    public static int eliminarRegistro(Connection con, String bd, String table, String column, String valor) {
         int resultado = 0;
         try {
 
@@ -172,7 +172,7 @@ public class Utilitario {
             // delete from [ADMIN_A].[dbo].[saAjuste] where ajue_num = '23'
             String sql = "delete from " + bd + ".dbo." + table + " where  " + column + " = ?";
             ps = con.prepareStatement(sql);
-            ps.setInt(1, valor);
+            ps.setString(1, valor);
             resultado = ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Utilitario.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,7 +244,6 @@ public class Utilitario {
     public static int anularFactura(Connection con, String bd, String table_name, String doc_num) {
         int resultado = 0;
         try {
-
             String sql = "Update  " + bd + ".dbo." + table_name + " set anulado = '1'  where  " + " doc_num = ?";
             PreparedStatement pstmtActualizar = null;
             pstmtActualizar = (PreparedStatement) con.prepareStatement(sql);
@@ -260,7 +259,9 @@ public class Utilitario {
     public static void main(String arg[]) {
 //        int respueste = Utilitario.optenerUltimoImp(Conexion.conexions(), "20220403", "1");
 
-        int res = Utilitario.anularFactura(Conexion.conexions(), "ADMIN_A", "saFacturaventa", "44455");
+        //int res = Utilitario.anularFactura(Conexion.conexions(), "ADMIN_A", "saFacturaventa", "44455");
+        
+        int res =Utilitario.eliminarRegistro(Conexion.conexions(), "ADMIN_A", "saAjusteReng", "ajue_num", "33333");
 
         //Utilitario.optenerCodUnidadArt(Conexion.conexions(), "nuevo");
         System.out.println(res);

@@ -920,7 +920,7 @@ public class FacturaVentaModelo {
 
     public ArrayList<FacturaVentaRengBO> pSeleccionarRenglonesFacturaVenta(String NumDocum) {
         ArrayList<FacturaVentaRengBO> lista = new ArrayList<FacturaVentaRengBO>();
-        try {
+        try {   
 
             cstmt = con.prepareCall("{CALL pSeleccionarRenglonesFacturaVenta("
                     + "?"
