@@ -938,6 +938,7 @@ public class VistaAjustesES extends javax.swing.JPanel {
         if (filaSeleccionada == -1) {
             JOptionPane.showMessageDialog(null, "Debe Selecionar una Fila", "advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
+            System.out.println("ENTRENDOOOOOOOOOOOOOOOOOOOOOOOOO" );
             String Articulo = jtablaArticulos.getValueAt(filaSeleccionada, 0).toString();
             String ArtDescripcion = jtablaArticulos.getValueAt(filaSeleccionada, 1).toString();
             listaArticulo = new ArrayList<ArticulosBO>();
@@ -976,7 +977,7 @@ public class VistaAjustesES extends javax.swing.JPanel {
             jtableAjusteES.setValueAt(Articulo, filaTablaTipoAjuste, 2);
             jtableAjusteES.setValueAt(ArtDescripcion, filaTablaTipoAjuste, 4);
             jtableAjusteES.setValueAt(listaArticulo.get(0).getModelo().toString(), filaTablaTipoAjuste, 5);
-           // jtableAjusteES.setValueAt(Utilitarios.Utilitario.optenerCodUnidadArt(con, Articulo), filaTablaTipoAjuste, 6);
+            jtableAjusteES.setValueAt(Utilitarios.Utilitario.optenerCodUnidadArt(con, Articulo), filaTablaTipoAjuste, 6);
          
             System.out.println("Valor Unidad" +Utilitarios.Utilitario.optenerCodUnidadArt(con, Articulo));
             JDialogoArticulos.dispose();

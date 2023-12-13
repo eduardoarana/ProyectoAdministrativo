@@ -122,12 +122,14 @@ public class StockxAlmacenModel {
             String sCo_Alma,
             String sCo_Art,
             String sCo_Uni,
-            int deCantidad,
+            double deCantidad,
+            String TipoStock,
             int bSumarStock,
             int bPermiteStockNegativo
     ) {
         try {
-            cstmt = con.prepareCall("{CALL  pInsertarStockAlmacen("
+            cstmt = con.prepareCall("{CALL  pStockActualizar("
+                    + "?,"
                     + "?,"
                     + "?,"
                     + "?,"
@@ -136,11 +138,23 @@ public class StockxAlmacenModel {
                     + "?"
                     + ")}"
             );
+
+            cstmt.setString(1, sCo_Alma);
+            cstmt.setString(2, sCo_Art);
+            cstmt.setString(3, sCo_Uni);
+            cstmt.setDouble(4, deCantidad);
+            cstmt.setString(5, TipoStock);
+            cstmt.setInt(6, bSumarStock);
+            cstmt.setInt(7, bPermiteStockNegativo);
+            resultado = cstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return resultado;
     }
-
+    public static void main(String args[]) {
+        StockxAlmacenModel m = new StockxAlmacenModel();
+        int resu = m.pStockActualizar("VAL", "camara", "kg", 233, "ACT", 1, 0);
+        System.out.println("Resultado " + resu);
+    }
 }

@@ -155,7 +155,7 @@ public class ArticuloController implements ActionListener, KeyListener {
                     Utilitario.obtenerFecha(vista.fechregistro),
                     vista.txtDescripcionArt.getText(),//Descripcion del Articulo
                     vista.selecTipo.getSelectedItem().toString(),//Tipo
-                    "1",//BitAnulado
+                    "0",//BitAnulado
                     "20020602",//Fecha
                     vista.txtcodLinea.getText().replaceAll("\\s", ""), //vista.selectLinea.getSelectedItem().toString(),//Codigo Linea
                     vista.txtCodSubLinea.getText().replaceAll("\\s", ""),// Sublinea
@@ -412,7 +412,10 @@ public class ArticuloController implements ActionListener, KeyListener {
             vista.jDialogArticulo.dispose();
         } else if (event.getSource() == this.vista.btnCancelar) {
             vista.jDialogArticulo.dispose();
-        } else if (event.getSource() == this.vista.btnaceptarRelacionUnidad) {
+        }else if (event.getSource() == this.vista.btnCancelarRelacionUnidad) {
+            vista.jDialogRelacionUnidad.dispose();
+        }
+        else if (event.getSource() == this.vista.btnaceptarRelacionUnidad) {
 
             String unidadPrincipal = vista.jruniprimaria.isSelected() ? "1" : "0",
                     unidadadSecundaria = vista.jruniSecundaria.isSelected() ? "1" : "0";
@@ -425,8 +428,8 @@ public class ArticuloController implements ActionListener, KeyListener {
                     "1",
                     "0",
                     "0",
-                    "0",
-                    unidadPrincipal,
+                    unidadPrincipal,//bUso_Principal
+                    "0", //bUso_Principal
                     "1",
                     unidadadSecundaria,
                     "0",//Uso_Secundaria
