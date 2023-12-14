@@ -576,19 +576,19 @@ public class ArticuloModel {
         return lista;
     }
 
-//    public static void main(String arg[]) {
-//        ArticuloModel m = new ArticuloModel();
-////        int resultadd = m.pInsertarArticulo("test",
-////                "2020-07-29", "Art Descripcion",
-////                "tipo", "1", "2020-07-29", "01", "02",
-////                "03", "04", "05", "item", "Model", "ref",
-////                "1", "2", "3", "4", "12", "14", "1", "",
-////                "3", "", "CdPro", "G", "22", "9", "300",
-////                "400", "23", "77", "55", "44", "33", "2",
-////                "2", "10", "Comentario", "TipoCo", "89", "34",
-////                "23", "0.2", "sI_art_des", "", "ret", "Camp1",
-////                "CAmp2", "UsuIng", "SucuIn");
-////        System.out.println(resultadd);
+    public static void main(String arg[]) {
+        ArticuloModel m = new ArticuloModel();
+        int resultadd = m.pInsertarArticulo("test",
+                "20231213", "Art Descripcion",
+                "tipo", "1", "20231213", "01", "02",
+                "03", "04", "05", "item", "Model", "ref",
+                "1", "2", "3", "4", "12", "14", "1", "",
+                "3", "", "CdPro", "G", "22", "9", "300",
+                "400", "23", "77", "55", "44", "33", "2",
+                "2", "10", "Comentario", "TipoCo", "89", "34",
+                "23", "0.2", "sI_art_des", "", "ret", "Camp1",
+                "CAmp2", "UsuIng", "SucuIn");
+        System.out.println(resultadd);
 //        //    ArrayList<ArticulosBO> list = new ArrayList<ArticulosBO>();
 //
 //        // public static String getTablaId(Connection con, String tabla, String where, String column, String valorWhere) {
@@ -601,7 +601,7 @@ public class ArticuloModel {
 ////        String resul = Utilitario.getTablaId(con, "sacolor", "des_color", "co_color", "negro");
 ////        int resul = m.pEliminarArticulo("ht");
 ////        System.out.println(" codigo del unidad : " + resul);
-//    }
+    }
 //Proceso donde realiza la Insercion con la data Articulos .... 
 // 3 exec pInsertarUnidadArticuloRenglon @iRENG_NUM=0,@sCo_Art='W',@sCo_Uni='B12',@bRelacion=0,@deEquivalencia=1,@bUso_Venta=0,@bUso_Compra=0,@bUni_Principal=1,@bUso_Principal=1,@bUni_Secundaria=0,@bUso_Secundaria=0,@bUso_NumDecimales=0,@iNum_Decimales=NULL,@sREVISADO=NULL,@sTRASNFE=NULL,@sco_sucu_in='01',@sco_us_in='PROFIT',@sMaquina='EARANA-PC'
 // 

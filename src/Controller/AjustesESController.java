@@ -177,17 +177,29 @@ public class AjustesESController implements ActionListener, KeyListener {
                 //exec pStockActualizar @sCo_Alma='VAL',@sCo_Art='0101001',@sCo_Uni='KL    ',
                 //@deCantidad=6,@sTipoStock='ACT',@bSumarStock=1,@bPermiteStockNegativo=1
 //                  int resultado = m.pStockActualizar("VAL", "carro", "uni", "4", "ACT", "1", "1");
-                resultado =stockModelo.pStockActualizar(
-                        vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
-                        vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
-                        vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
-                        Integer.parseInt(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
-                        "ACT",
-                        1,
-                        0);
+                if (vista.jtableAjusteES.getValueAt(i, 1).toString() == "E01") {
+
+                    resultado = stockModelo.pStockActualizar(
+                            vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
+                            vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
+                            vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
+                            Integer.parseInt(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
+                            "ACT",
+                            1,
+                            0);
+                }else if (vista.jtableAjusteES.getValueAt(i, 1).toString() != "E01") {
+                resultado = stockModelo.pStockActualizar(
+                            vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
+                            vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
+                            vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
+                            Integer.parseInt(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
+                            "ACT",
+                            0,
+                            0);
+            }
                 
-                System.out.println("ACTUALIZAR STOCK ALAMACEN"+resultado );
-                
+                System.out.println("ACTUALIZAR STOCK ALAMACEN" + resultado);
+
 //                int resultadoStockAlmacen = stockModelo.pInsertarStockAlmacen(
 //                        vista.jtableAjusteES.getValueAt(i, 5).toString(), //@sco_alma
 //                        vista.jtableAjusteES.getValueAt(i, 2).toString(), //co_art
@@ -196,9 +208,7 @@ public class AjustesESController implements ActionListener, KeyListener {
 //                        null, //sRevisado
 //                        null //sTrasnfe
 //                );
-
 //                System.out.println("RESULTADO STOCK ALMACEN  pInsertarStockAlmacen :::: " + resultadoStockAlmacen);
-
                 resultado = modelo.pInsertarRenglonesAjusteEntradaSalida(
                         vista.txtajue_num.getText(),//sAjue_Num
                         vista.jtableAjusteES.getValueAt(i, 0).toString(),// iReng_Num,
@@ -295,8 +305,8 @@ public class AjustesESController implements ActionListener, KeyListener {
                         "1",//sRevisado,
                         "0"//sTrasnfe
                 );
-                System.out.println("CANTIDAD :::::::"+vista.jtableAjusteES.getValueAt(i, 7).toString());
-                resultado =stockModelo.pStockActualizar(
+                System.out.println("CANTIDAD :::::::" + vista.jtableAjusteES.getValueAt(i, 7).toString());
+                resultado = stockModelo.pStockActualizar(
                         vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
                         vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
                         vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
@@ -357,14 +367,14 @@ public class AjustesESController implements ActionListener, KeyListener {
             cargarDatosAjustesESrenglon(null);
             modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
         } else if (event.getSource().equals(this.vista.btnagregar)) {
-            int ultimaFila = 0, renglones=0;
+            int ultimaFila = 0, renglones = 0;
             ultimaFila = vista.jtableAjusteES.getRowCount();
             if (vista.jtableAjusteES.getRowCount() == 0) {
                 renglones = +1;
             } else {
                 renglones = Integer.parseInt(vista.jtableAjusteES.getValueAt(vista.jtableAjusteES.getRowCount() - 1, 0).toString()) + 1;
             }
-            
+
             modeloTablaAjustesEntradaSalidaRenglon.refrescarTable();
             SaAjusteRengBO ajustes = new SaAjusteRengBO();
             ajustes.setReng_num(String.valueOf(renglones));

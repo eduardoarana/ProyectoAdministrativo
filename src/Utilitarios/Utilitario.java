@@ -49,6 +49,23 @@ public class Utilitario {
         }
     }
 
+    //formato Fecha parametro Jcalendar  YYYYMMDD Sin Parametros , ni caracteres Especiales 
+    public static String obtenerFechaSinEspacio(JDateChooser calendario) {
+        try {
+            int dia, mes, ano;
+            String fecha;
+
+            dia = calendario.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = calendario.getCalendar().get(Calendar.MONTH) + 1;
+            ano = calendario.getCalendar().get(Calendar.YEAR);
+            fecha = String.valueOf(ano) + "" + String.valueOf(mes) + "" + String.valueOf(dia);
+            return fecha;
+        } catch (NullPointerException e) {
+            return null;
+        }
+    }
+    
+    
     //Parametro string formatofecha  yyyy-MM-dd  y retorna fecha tipo Date..
     public static Date obtenerFecha(String Sfecha) {
         SimpleDateFormat objSDF = new SimpleDateFormat("yyyyMMdd");

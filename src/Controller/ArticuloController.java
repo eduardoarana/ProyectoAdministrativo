@@ -149,14 +149,14 @@ public class ArticuloController implements ActionListener, KeyListener {
             }
             ArrayList<ArtUnidadBO> listaArtUnidad = new ArrayList<>();
             listaArtUnidad = artiunidadModel.pObtenerListadoDatosUnidad(lblNombreEmpresa.getText(), "saArtUnidad", "Co_art", vista.txtcodArticulo.getText(), "3");
-
+            System.out.println("CLASES :::::::::::::::::FECHA   "+Utilitario.obtenerFecha(vista.fechregistro));
             resultado = modelo.pInsertarArticulo(
                     vista.txtcodArticulo.getText(),
-                    Utilitario.obtenerFecha(vista.fechregistro),
+                    Utilitario.obtenerFechaSinEspacio(vista.fechregistro),
                     vista.txtDescripcionArt.getText(),//Descripcion del Articulo
                     vista.selecTipo.getSelectedItem().toString(),//Tipo
                     "0",//BitAnulado
-                    "20020602",//Fecha
+                    Utilitario.obtenerFechaSinEspacio(vista.fechregistro),//Fecha
                     vista.txtcodLinea.getText().replaceAll("\\s", ""), //vista.selectLinea.getSelectedItem().toString(),//Codigo Linea
                     vista.txtCodSubLinea.getText().replaceAll("\\s", ""),// Sublinea
                     vista.txtCodCategoria.getText().replaceAll("\\s", ""),// Categoria 
