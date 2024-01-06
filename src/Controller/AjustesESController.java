@@ -38,7 +38,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-
 /**
  *
  * @author earana
@@ -111,10 +110,10 @@ public class AjustesESController implements ActionListener, KeyListener {
             //pruguntar si existe el registro ?
             ArrayList<SaAjustesBO> listaExite = modelo.pObtenerListadoDatos(Vistaprincipal.tempEmpresa, "saAjuste", "ajue_num", vista.txtajue_num.getText(), "3");
             if (listaExite.size() > 0) {
-                modelo.pActualizarAjusteEntradaSalida(
+                resultado = modelo.pActualizarAjusteEntradaSalida(
                         vista.txtajue_num.getText(), //sAjue_Num
                         vista.txtajue_num.getText(),//sAjue_NumOrig
-                        Utilitario.obtenerFecha(vista.sdFecha),//Utilitario.obtenerFecha(vista.sdFecha),// sdFecha
+                        Utilitario.obtenerFechaSinEspacio(vista.sdFecha),//Utilitario.obtenerFecha(vista.sdFecha),// sdFecha
                         vista.txtDescripcion.getText(), // sMotivo
                         vista.txtTasa.getText(),//deTasa
                         vista.txtMoneda.getText(),// sCo_Mone
@@ -141,17 +140,19 @@ public class AjustesESController implements ActionListener, KeyListener {
                 );
 
             } else {
+                System.out.println("  INSERTAR AJUSTE :::::  " + Utilitarios.Utilitario.obtenerFechaSinEspacio(vista.sdFecha));
+
                 resultado = modelo.pInsertarAjusteEntradaSalida(
                         vista.txtajue_num.getText().replaceAll("\\s", ""),// Num Ajuste,
                         VistaAjustesES.txtMoneda.getText(),//Sco_Mone
                         vista.txtDescripcion.getText(), //motivo
-                        Utilitarios.Utilitario.obtenerFecha(vista.sdFecha), //fecha
+                        Utilitarios.Utilitario.obtenerFechaSinEspacio(vista.sdFecha), //fecha
                         vista.txtTasa.getText(),//tasa
-                        "1",//Anulado
+                        "0",//Anulado
                         vista.txtInvFisico.getText(),//InvFisico 
                         "1",// Auxiliar
                         "2",//sAux02
-                        "s", //sDis_Cen
+                        "", //sDis_Cen
                         vista.txtCampo1.getText(),//sCampo1 
                         vista.txtCampo2.getText(),//sCampo2
                         vista.txtCampo3.getText(),
@@ -171,34 +172,12 @@ public class AjustesESController implements ActionListener, KeyListener {
                 System.out.println("Guardado pInsertarAjusteEntradaSalida " + resultado);
             }
             for (int i = 0; i < cantidadRows; i++) {
-
+                System.out.println("ENTRANDO par a los renglones ::::::.. ");
                 // Actualizar Stok por Almacen           
                 //           exec pStockActualizar @sCo_Alma='VAL',@sCo_Art='0101002',@sCo_Uni='BULTO ',@deCantidad=5,@sTipoStock='ACT',@bSumarStock=1,@bPermiteStockNegativo=1 
                 //exec pStockActualizar @sCo_Alma='VAL',@sCo_Art='0101001',@sCo_Uni='KL    ',
                 //@deCantidad=6,@sTipoStock='ACT',@bSumarStock=1,@bPermiteStockNegativo=1
 //                  int resultado = m.pStockActualizar("VAL", "carro", "uni", "4", "ACT", "1", "1");
-                if (vista.jtableAjusteES.getValueAt(i, 1).toString() == "E01") {
-
-                    resultado = stockModelo.pStockActualizar(
-                            vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
-                            vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
-                            vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
-                            Integer.parseInt(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
-                            "ACT",
-                            1,
-                            0);
-                }else if (vista.jtableAjusteES.getValueAt(i, 1).toString() != "E01") {
-                resultado = stockModelo.pStockActualizar(
-                            vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
-                            vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
-                            vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
-                            Integer.parseInt(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
-                            "ACT",
-                            0,
-                            0);
-            }
-                
-                System.out.println("ACTUALIZAR STOCK ALAMACEN" + resultado);
 
 //                int resultadoStockAlmacen = stockModelo.pInsertarStockAlmacen(
 //                        vista.jtableAjusteES.getValueAt(i, 5).toString(), //@sco_alma
@@ -230,10 +209,56 @@ public class AjustesESController implements ActionListener, KeyListener {
                         "1",//sRevisado,
                         "0"//sTrasnfe
                 );
+                System.out.println("ACTUALIZAR STOCK ALAMACEN " + resultado);
+                System.out.println("tipo de entrada " + VistaAjustesES.jtableAjusteES.getValueAt(i, 1).toString());
+
+                // inserta en la tabla saStockAlmacen
                 //limpiar la tabla 
 //                for (int j = 0; j < cantidadRows; j++) {
 //                    modeloTablaAjustesEntradaSalidaRenglon.removedRow(j);
 //                }
+            }
+
+            for (int i = 0; i < cantidadRows; i++) {
+                String tipoEntrada = "E01";
+                if (tipoEntrada.equals(VistaAjustesES.jtableAjusteES.getValueAt(i, 1).toString().replaceAll("\\s", ""))) {
+
+                    System.out.println("TIPO DE ENTRADA Guardar ::::  " + vista.jtableAjusteES.getValueAt(i, 1).toString());
+                    resultado = stockModelo.pStockActualizar(
+                            vista.jtableAjusteES.getValueAt(i, 5).toString().replaceAll("\\s", ""),//sCo_Alma
+                            vista.jtableAjusteES.getValueAt(i, 2).toString().replaceAll("\\s", ""),// cod Articulo
+                            vista.jtableAjusteES.getValueAt(i, 6).toString().replaceAll("\\s", ""), //Unidad
+                            vista.jtableAjusteES.getValueAt(i, 7).toString(),// cantidad
+                            "ACT",
+                            "1",
+                            "0");
+                } else if (VistaAjustesES.jtableAjusteES.getValueAt(i, 1).toString() != "E01") {
+                    double cantidadActual = Utilitario.cantidadStockActual(Conexion.conexions(),
+                            Vistaprincipal.tempEmpresa,
+                            vista.jtableAjusteES.getValueAt(i, 5).toString(), //Co_Alma
+                            "ACT", //@sTipoStock
+                            vista.jtableAjusteES.getValueAt(i, 2).toString() //cod Articulo
+                    );
+                    //Utilitario.optenerCodUnidadArt(Conexion.conexions(), "nuevo");
+                    double cantidadEstimada = Double.parseDouble(vista.jtableAjusteES.getValueAt(i, 7).toString());
+                    double resta = cantidadActual - cantidadEstimada;
+                    if (resta < 0) {
+                        System.out.println("en el almacÃ©n \"val\". El stock actual es " + cantidadActual + " y el stock final es de " + resta);
+                        JOptionPane.showMessageDialog(new JFrame(), "en el almacÃ©n \"val\". El stock actual es " + cantidadActual + " y el stock final es de " + resta, "Software", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+
+                    } else {
+                        System.out.println("TIPO DE ENTRADA Diferente " + vista.jtableAjusteES.getValueAt(i, 1).toString());
+                        resultado = stockModelo.pStockActualizar(
+                                vista.jtableAjusteES.getValueAt(i, 5).toString().replaceAll("\\s", ""),//sCo_Alma
+                                vista.jtableAjusteES.getValueAt(i, 2).toString().replaceAll("\\s", ""),// cod Articulo
+                                vista.jtableAjusteES.getValueAt(i, 6).toString().replaceAll("\\s", ""), //Unidad
+                                vista.jtableAjusteES.getValueAt(i, 7).toString(),// cantidad
+                                "ACT",
+                                "0",
+                                "0");
+                    }
+                }
             }
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(new JFrame(), "Se ha Guardado Satisfactoriamente", "Software", JOptionPane.INFORMATION_MESSAGE);
@@ -243,7 +268,6 @@ public class AjustesESController implements ActionListener, KeyListener {
 
         } else if (event.getSource().equals(this.vista.btnactulizar)) {
 
-            System.out.println("FECHA :::::::" + Utilitario.obtenerFecha(vista.sdFecha));
             resultado = modelo.pActualizarAjusteEntradaSalida(
                     vista.txtajue_num.getText(), //sAjue_Num
                     vista.txtajue_num.getText(),//sAjue_NumOrig
@@ -305,27 +329,73 @@ public class AjustesESController implements ActionListener, KeyListener {
                         "1",//sRevisado,
                         "0"//sTrasnfe
                 );
-                System.out.println("CANTIDAD :::::::" + vista.jtableAjusteES.getValueAt(i, 7).toString());
-                resultado = stockModelo.pStockActualizar(
-                        vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
-                        vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
-                        vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
-                        Double.parseDouble(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
-                        "ACT",
-                        1,
-                        0);
-            }
 
+                System.out.println("TIpo de Entrada :::::::" + vista.jtableAjusteES.getValueAt(i, 1).toString());
+//                resultado = stockModelo.pStockActualizar(
+//                        vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
+//                        vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
+//                        vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
+//                        Double.parseDouble(vista.jtableAjusteES.getValueAt(i, 7).toString()),// cantidad
+//                        "ACT",
+//                        1,
+//                        0);
+
+                if (vista.jtableAjusteES.getValueAt(i, 1).toString().replaceAll("\\s", "") == "E01") {
+                    resultado = stockModelo.pStockActualizar(
+                            vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
+                            vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
+                            vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
+                            vista.jtableAjusteES.getValueAt(i, 7).toString(),// cantidad
+                            "ACT", //@sTipoStock
+                            "1",// @bSumarStock
+                            "0" // @bPermiteStockNegativo
+                    );
+                    System.out.println("Entrando a la Condicion para actualizar Entrada   :: pStockActualizar " + resultado);
+
+                    // cuando el Tipo sea Salida de mercancia   S01
+                } else if (vista.jtableAjusteES.getValueAt(i, 1).toString().replaceAll("\\s", "") == "S01") {
+
+                    double cantidadActual = Utilitario.cantidadStockActual(Conexion.conexions(),
+                            Vistaprincipal.tempEmpresa,
+                            vista.jtableAjusteES.getValueAt(i, 5).toString(), //Co_Alma
+                            "ACT", //@sTipoStock
+                            vista.jtableAjusteES.getValueAt(i, 2).toString() //cod Articulo
+                    );
+                    //Utilitario.optenerCodUnidadArt(Conexion.conexions(), "nuevo");
+                    double cantidadEstimada = Double.parseDouble(vista.jtableAjusteES.getValueAt(i, 7).toString());
+                    double resta = cantidadActual - cantidadEstimada;
+                    if (resta < 0) {
+                        System.out.println("en el almacÃ©n \"val\". El stock actual es " + cantidadActual + " y el stock final es de " + resta);
+                        JOptionPane.showMessageDialog(new JFrame(), "en el almacÃ©n \"val\". El stock actual es " + cantidadActual + " y el stock final es de " + resta, "Software", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    } else {
+                        System.out.println("realiza la operacion ");
+                        resultado = stockModelo.pStockActualizar(
+                                vista.jtableAjusteES.getValueAt(i, 5).toString(),//sCo_Alma
+                                vista.jtableAjusteES.getValueAt(i, 2).toString(),// cod Articulo
+                                vista.jtableAjusteES.getValueAt(i, 6).toString(), //Unidad
+                                vista.jtableAjusteES.getValueAt(i, 7).toString(),// cantidad
+                                "ACT", //@sTipoStock
+                                "0",// @bSumarStock
+                                "0" // @bPermiteStockNegativo
+                        );
+
+                    }
+
+                    System.out.println("Entrando a la Condicion para actualizar Salida  :: pStockActualizar " + resultado);
+                }
+            }
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(new JFrame(), "Se ha Actualizado Satisfactoriamente", "Software", JOptionPane.INFORMATION_MESSAGE);
                 vista.settearCampos();
+                cargarDatosAjustesESrenglon(null);
 
                 modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
                 //    modeloTablaAjustesEntradaSalidaRenglon.limpiarRengloTabla(getCantidadListRengl());
             }
         } else if (event.getSource().equals(this.vista.btnEliminar)) {
             String numAjuste = vista.txtajue_num.getText();
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea realizar esta acción", "WARNING",
+            if (JOptionPane.showConfirmDialog(null, "EstÃ¡ seguro que desea realizar esta acciÃ³n", "WARNING",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 resultado = modelo.pEliminarAjusteEntradaSalida(
                         numAjuste,
@@ -344,8 +414,8 @@ public class AjustesESController implements ActionListener, KeyListener {
             }
             cargarDatosAjustesESrenglon(null);
         } else if (event.getSource().equals(this.vista.btnImprimirAjuste)) {
-            try {
-                String ruta = "C:\\Users\\aranaVentur\\Downloads\\ProyectoAdministrativo\\Reportes\\RepFormatoAjEntraSa.jasper";
+            try { 
+                String ruta ="Q:\\ProyectoAdministrativo\\src\\Reportes\\RepFormatoAjEntraSa.jasper"; //"C:\\Users\\aranaVentur\\Downloads\\ProyectoAdministrativo\\Reportes\\RepFormatoAjEntraSa.jasper";
                 Map parametro = new HashMap();
                 parametro.put("sNum_Ajuste_d", null);
                 parametro.put("sNum_Ajuste_h", null);
@@ -356,7 +426,7 @@ public class AjustesESController implements ActionListener, KeyListener {
                 JasperReport reporte = null;
                 reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
                 // reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(ruta))   ;
-                JasperPrint jprint = JasperFillManager.fillReport(ruta, parametro, conexion.conexions());
+                JasperPrint jprint = JasperFillManager.fillReport(ruta, parametro, conexion.conexionControlCenter("admin_a", "profit", "profit"));
                 JasperViewer view = new JasperViewer(jprint, false);
                 view.setVisible(true);
             } catch (JRException ex) {
@@ -413,7 +483,7 @@ public class AjustesESController implements ActionListener, KeyListener {
                 JOptionPane.showMessageDialog(vista, "Debe seleccionar un Registro", "Software", JOptionPane.INFORMATION_MESSAGE);
                 return;
             } else {
-                System.out.println("vista.jtablaAjustes.getValueAt(selection, 0).toString()" + vista.jtablaAjustes.getValueAt(selection, 0).toString());
+
                 ArrayList<SaAjustesBO> lista
                         = modelo.pObtenerListadoDatos(
                                 Vistaprincipal.tempEmpresa,// @sDatabase_Name
@@ -422,6 +492,7 @@ public class AjustesESController implements ActionListener, KeyListener {
                                 vista.jtablaAjustes.getValueAt(selection, 0).toString(), // @sValor
                                 "3" // @iOpcion
                         );
+                System.out.println("FECHASSSSSSSSSSSS ::::: " + Utilitarios.Utilitario.obtenerFecha(lista.get(0).getFecha()));
                 vista.txtajue_num.setText(lista.get(0).getAjue_num().replaceAll("\\s", ""));
                 vista.txtDescripcion.setText(lista.get(0).getMotivo());
                 vista.txtInvFisico.setText(lista.get(0).getCo_invfisico().replaceAll("\\s", ""));

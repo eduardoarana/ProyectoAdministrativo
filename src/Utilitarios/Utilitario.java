@@ -11,6 +11,9 @@ import java.net.InetAddress;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -28,11 +31,9 @@ public class Utilitario {
     public Conexion conexion;
 
     public Utilitario() {
-    
+
     }
 
-   
-    
     //formato Fecha parametro Jcalendar  YYYY-MM-DD
     public static String obtenerFecha(JDateChooser calendario) {
         try {
@@ -53,22 +54,85 @@ public class Utilitario {
     public static String obtenerFechaSinEspacio(JDateChooser calendario) {
         try {
             int dia, mes, ano;
-            String fecha;
+            String fecha, dias = "", meses = "";
 
             dia = calendario.getCalendar().get(Calendar.DAY_OF_MONTH);
             mes = calendario.getCalendar().get(Calendar.MONTH) + 1;
             ano = calendario.getCalendar().get(Calendar.YEAR);
-            fecha = String.valueOf(ano) + "" + String.valueOf(mes) + "" + String.valueOf(dia);
+            switch (dia) {
+                case 1:
+                    dias = "01";
+                    break;
+                case 2:
+                    dias = "02";
+                    break;
+                case 3:
+                    dias = "03";
+                    break;
+                case 4:
+                    dias = "04";
+                    break;
+                case 5:
+                    dias = "05";
+                    break;
+                case 6:
+                    dias = "06";
+                    break;
+                case 7:
+                    dias = "07";
+                    break;
+                case 8:
+                    dias = "08";
+                    break;
+                case 9:
+                    dias = "09";
+                    break;
+                default:
+                    dias = String.valueOf(dia);
+            }
+            switch (mes) {
+                case 1:
+                    meses = "01";
+                    break;
+                case 2:
+                    meses = "02";
+                    break;
+                case 3:
+                    meses = "03";
+                    break;
+                case 4:
+                    meses = "04";
+                    break;
+                case 5:
+                    meses = "05";
+                    break;
+                case 6:
+                    meses = "06";
+                    break;
+                case 7:
+                    meses = "07";
+                    break;
+                case 8:
+                    meses = "08";
+                    break;
+                case 9:
+                    meses = "09";
+                    break;
+                default:
+                    meses = String.valueOf(mes);
+            }
+            System.out.println("MES:" + meses + " Dia: " + dias);
+            fecha = String.valueOf(ano) + "" + meses + "" + dias;
             return fecha;
         } catch (NullPointerException e) {
             return null;
         }
     }
-    
-    
-    //Parametro string formatofecha  yyyy-MM-dd  y retorna fecha tipo Date..
+
+//Parametro string formatofecha  yyyy-MM-dd  y retorna fecha tipo Date..
     public static Date obtenerFecha(String Sfecha) {
-        SimpleDateFormat objSDF = new SimpleDateFormat("yyyyMMdd");
+        System.out.println("FECHA :::::::: " + Sfecha);
+        SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
 
         Date fecha = new Date();
         try {
@@ -203,7 +267,7 @@ public class Utilitario {
         try {
             PreparedStatement pstmtConsultar = null;
             ResultSet rs;
-            Conexion conexion = null;
+
             String sql = "select uni.co_uni from saArticulo art \n"
                     + "inner join saArtUnidad uni on uni.co_art=art.co_art \n"
                     + "where art.co_art=? \n"
@@ -273,15 +337,44 @@ public class Utilitario {
         return resultado;
     }
 
+    public static double cantidadStockActual(Connection con, String bd, String co_alma, String tipo, String co_art) {
+        //select stock from saStockAlmacen where co_alma='VAL' and tipo='ACT' and co_art='guia'
+        PreparedStatement pstmtConsultar = null;
+        String sql = "Select  stock from " + bd + ".dbo.saStockAlmacen where co_alma=? and tipo =? and co_art=?";
+        double resultado = 0;
+        try {
+
+            pstmtConsultar = (PreparedStatement) con.prepareStatement(sql);
+            pstmtConsultar.setString(1, co_alma);
+            pstmtConsultar.setString(2, tipo);
+            pstmtConsultar.setString(3, co_art);
+
+            ResultSet rs;
+
+            rs = pstmtConsultar.executeQuery();
+            if (rs.next()) {
+                resultado = Double.parseDouble(rs.getString("stock"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
     public static void main(String arg[]) {
-//        int respueste = Utilitario.optenerUltimoImp(Conexion.conexions(), "20220403", "1");
-
+        //int respueste = Utilitario.optenerUltimoImp(Conexion.conexions(), "20220403", "1");
         //int res = Utilitario.anularFactura(Conexion.conexions(), "ADMIN_A", "saFacturaventa", "44455");
-        
-        int res =Utilitario.eliminarRegistro(Conexion.conexions(), "ADMIN_A", "saAjusteReng", "ajue_num", "33333");
+        // int res = Utilitario.eliminarRegistro(Conexion.conexions(), "ADMIN_A", "saAjusteReng", "ajue_num", "33333");
 
-        //Utilitario.optenerCodUnidadArt(Conexion.conexions(), "nuevo");
-        System.out.println(res);
-
+        for (int i = 0; i < 3; i++) {
+            double ress = Utilitario.cantidadStockActual(Conexion.conexions(), "admin_a", "VAL", "ACT", "guia");
+            //Utilitario.optenerCodUnidadArt(Conexion.conexions(), "nuevo");
+            double resta = ress - 2334;
+            if (resta < 0) {
+                System.out.println("en el almacén \"val\". El stock actual es " + ress + " y el stock final es de " + resta);
+            } else {
+                System.out.println("realiza la operacion ");
+            }
+        }
     }
 }

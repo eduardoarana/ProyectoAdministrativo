@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -122,12 +124,15 @@ public class StockxAlmacenModel {
             String sCo_Alma,
             String sCo_Art,
             String sCo_Uni,
-            double deCantidad,
+            String deCantidad,
             String TipoStock,
-            int bSumarStock,
-            int bPermiteStockNegativo
+            String bSumarStock,
+            String bPermiteStockNegativo
     ) {
+        int resu = 0;
         try {
+
+            con.setAutoCommit(false);
             cstmt = con.prepareCall("{CALL  pStockActualizar("
                     + "?,"
                     + "?,"
@@ -138,23 +143,44 @@ public class StockxAlmacenModel {
                     + "?"
                     + ")}"
             );
-
             cstmt.setString(1, sCo_Alma);
             cstmt.setString(2, sCo_Art);
             cstmt.setString(3, sCo_Uni);
-            cstmt.setDouble(4, deCantidad);
+            cstmt.setString(4, deCantidad);
             cstmt.setString(5, TipoStock);
-            cstmt.setInt(6, bSumarStock);
-            cstmt.setInt(7, bPermiteStockNegativo);
-            resultado = cstmt.executeUpdate();
-        } catch (SQLException e) {
+            cstmt.setString(6, bSumarStock);
+            cstmt.setString(7, bPermiteStockNegativo);
+
+            boolean respuesta = true;
+            resu = cstmt.executeUpdate();
+            if (con.isClosed()) {
+                System.out.println("CERRADO ::::::::");
+                con.setAutoCommit(true);
+            }
+            // Confirmar la transacción
+//            con.rollback();
+            // Cerrar la conexión
+            con.commit();
+            System.out.println("Respuesta :: " + respuesta);
+
+        } catch (Exception e) {
+            //  JOptionPane.showMessageDialog(new JFrame(), "No existe relación artículo/unidad para el artículo \" " + sCo_Art + " \" y unidad \" " + sCo_Uni + " ", "Software", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
         }
-        return resultado;
+//        catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+        return resu;
     }
+
     public static void main(String args[]) {
         StockxAlmacenModel m = new StockxAlmacenModel();
-        int resu = m.pStockActualizar("VAL", "camara", "kg", 233, "ACT", 1, 0);
+        int resu = 0;
+
+        resu =m.pStockActualizar("VAL", "camara", "pe", "200", "ACT", "0", "0");
+        resu = m.pStockActualizar("VAL", "siguenal", "pe", "1580", "ACT", "0", "0");
+//         m.pStockActualizar("VAL", "guia", "uni", "235", "ACT", 1, 0);
+
         System.out.println("Resultado " + resu);
     }
 }

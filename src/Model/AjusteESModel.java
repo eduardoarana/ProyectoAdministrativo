@@ -108,7 +108,7 @@ public class AjusteESModel {
             cstmt.setString(23, sTrasnfe);
             resultado = cstmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(AjusteESModel.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return resultado;
     }
@@ -517,7 +517,7 @@ public class AjusteESModel {
         int resulta = m.pActualizarAjusteEntradaSalida(
                 "nuevo",
                 "nuevo",
-                "2021-11-14",
+                "2025-02-02",
                 "descrip Actualizacion ",
                 "1",
                 "BSF",

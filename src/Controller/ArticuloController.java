@@ -932,7 +932,7 @@ public class ArticuloController implements ActionListener, KeyListener {
         } else if (event.getSource().equals(vista.btnAceptarImprimirReporte)) {
 
             try {
-                String ruta = "C:\\Users\\aranaVentur\\Downloads\\ProyectoAdministrativo\\Reportes\\RepStockArticulosxAlmacen.jasper";
+                String ruta = "Q:\\ProyectoAdministrativo\\src\\Reportes\\RepStockArticulosxAlmacen.jasper";
 
                 Map parametro = new HashMap();
                 String codDesde = vista.txtCodArtDesde.getText(), codHasta = vista.txtCodArtHasta.getText(),
