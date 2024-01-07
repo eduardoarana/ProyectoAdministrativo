@@ -443,7 +443,7 @@ public class AjustesESController implements ActionListener, KeyListener {
                 renglones = +1;
             } else {
                 renglones = Integer.parseInt(vista.jtableAjusteES.getValueAt(vista.jtableAjusteES.getRowCount() - 1, 0).toString()) + 1;
-            }
+            }       
 
             modeloTablaAjustesEntradaSalidaRenglon.refrescarTable();
             SaAjusteRengBO ajustes = new SaAjusteRengBO();
