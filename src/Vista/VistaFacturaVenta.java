@@ -1502,7 +1502,7 @@ public class VistaFacturaVenta extends javax.swing.JPanel {
 
         jLabel21.setText("Total:");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, -1, 20));
-        jPanel1.add(fechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 130, -1));
+        jPanel1.add(fechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 130, -1));
         jPanel1.add(fechaFacturaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 150, -1));
         jPanel1.add(fechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 130, -1));
 

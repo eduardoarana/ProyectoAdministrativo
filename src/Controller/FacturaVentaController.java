@@ -105,6 +105,7 @@ public class FacturaVentaController implements ActionListener, KeyListener {
     }
 
     public FacturaVentaController() {
+        
     }
 
     @Override

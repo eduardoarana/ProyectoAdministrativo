@@ -154,7 +154,6 @@ public class ArtPrecioModel {
     ) {
         ArrayList<ArtPrecioBO> lista = new ArrayList<>();
         try {
-
             cstmt = con.prepareCall("{CALL pObtenerListadoDatos("
                     + "?,"
                     + "?,"

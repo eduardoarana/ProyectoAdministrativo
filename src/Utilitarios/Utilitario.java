@@ -29,6 +29,8 @@ public class Utilitario {
             MODULO_COTIZACION_VENTAS = "";
     public static Connection con;
     public Conexion conexion;
+    public static CallableStatement cstmt;
+    public static ResultSet rs;
 
     public Utilitario() {
 
@@ -359,6 +361,30 @@ public class Utilitario {
             e.printStackTrace();
         }
         return resultado;
+    }
+
+    public static String pObtenerProximoNumero(Connection con, String tabla, String campo, String prefijo) {
+        String respuesta = "";
+        try {
+            cstmt = con.prepareCall("{CALL pObtenerProximoNumero("
+                    + "?,"
+                    + "?,"
+                    + "?"
+                    + ")}");
+
+            cstmt.setString(1, tabla);
+            cstmt.setString(2, campo);
+            cstmt.setString(3, prefijo);
+            cstmt.execute();
+            rs = cstmt.getResultSet();
+            while (rs.next()) {
+                System.out.println(" VALORRR  " + rs.getString("Codigo"));
+                respuesta = rs.getString("Codigo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return respuesta;
     }
 
     public static void main(String arg[]) {

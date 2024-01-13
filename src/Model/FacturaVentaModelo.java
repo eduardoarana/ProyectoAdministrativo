@@ -8,6 +8,7 @@ package Model;
 import Beans.FacturaVentaBO;
 import Beans.FacturaVentaRengBO;
 import Conection.Conexion;
+import Vista.Vistaprincipal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,7 +32,7 @@ public class FacturaVentaModelo {
     public int resultado = 0;
 
     public FacturaVentaModelo() {
-        con = conexion.conexionControlCenter("demoa", "profit", "profit");
+        con = conexion.conexionControlCenter(Vistaprincipal.tempEmpresa, "profit", "profit");
     }
 
     public int pInsertarFacturaVenta(
@@ -972,14 +973,14 @@ public class FacturaVentaModelo {
     public static void main(String arg[]) {
         FacturaVentaModelo m = new FacturaVentaModelo();
         int resulta = 0;
-//       ArrayList<FacturaVentaBO> lista = m.pObtenerListadoDatos("Admin_A", "saFacturaVenta", "co_cli", "", "2");
-//        System.out.println("LIST=A" + lista.get(0).getCo_cli());
+       ArrayList<FacturaVentaRengBO> lista = m.pSeleccionarRenglonesFacturaVenta("0000000003");
+        System.out.println("LIST=A   " + lista.get(0).getCo_art());
 
 //        Boolean bandera = m.pExisteFacturaVentaRenglon(1, "otro", "999", "VAL");
 //        System.out.println("BANDERA :::" + bandera);
-        int re = m.pStockActualizar("VAL", "7593255000312", "uni", "500", "DES", "0", "0");
+//        int re = m.pStockActualizar("VAL", "7593255000312", "uni", "500", "DES", "0", "0");
 //  m.pStockActualizar("001", "0101002", "uni", "22", "ACT", "1", "0");
-        System.out.println("Model.FacturaVentaModelo.main()" + re);
+//        System.out.println("Model.FacturaVentaModelo.main()" + re);
 //           ArrayList<FacturaVentaRengBO>  lista =   m.pSeleccionarRenglonesFacturaVenta("55");
 //           
 //           System.out.println("Lista " + lista.get(0).getNum_doc());
