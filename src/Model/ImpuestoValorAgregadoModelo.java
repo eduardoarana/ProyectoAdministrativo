@@ -26,7 +26,7 @@ public class ImpuestoValorAgregadoModelo {
     public int resultado = 0;
 
     public ImpuestoValorAgregadoModelo() {
-        con = conexion.conexions();
+        con = Conexion.conexionControlCenter(Vista.Vistaprincipal.tempEmpresa, "profit", "profit");
     }
 
     public ArrayList<ImpuestoSobreVentaRengBO> pSeleccionarRenglonesImpuestoSobreVenta(String fecha) {
