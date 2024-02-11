@@ -34,6 +34,9 @@ public class Utilitario {
 
     public Utilitario() {
 
+        //77 estes es el contructor 
+        
+        
     }
 
     //formato Fecha parametro Jcalendar  YYYY-MM-DD
