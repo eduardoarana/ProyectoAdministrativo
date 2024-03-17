@@ -1085,7 +1085,7 @@ public class ArticuloController implements ActionListener, KeyListener {
                 JasperPrint jprint = JasperFillManager.fillReport(ruta, parametro, conexion.conexions());
                 JasperViewer view = new JasperViewer(jprint, false);
                 view.setVisible(true);
-                view.setVisible(true);
+               
             } catch (JRException ex) {
                 ex.printStackTrace();
             }
